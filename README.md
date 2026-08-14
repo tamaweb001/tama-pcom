@@ -1,28 +1,23 @@
-# Tama P-COM Web v15
+# Tama P-COM Catalog v2
 
-Chrome Web Serial version of the Windows Tama P-COM sender.
+- `index.html` : Web Serial + Windows版完全移植v15系送信処理 + アイテムカタログ
+- `catalog.json` : カタログ項目
+- `bin/` : BINファイル
+- `images/` : 表示画像
 
-## v2 connection diagnostics
+## カタログを増やす方法
 
-The initial Windows program uses:
+1. `bin/` に新しい `.bin` を追加
+2. `images/` に同じ名前の `.png` を追加
+3. `catalog.json` に1項目追加
 
-- 460800 baud
-- 8 data bits
-- 1 stop bit
-- no parity
-- no hardware flow control
-- `ECHO REQ\r\n` -> `ECHO REP`
-- DTR/RTS off (matching .NET SerialPort defaults)
+例:
+```json
+{
+  "name": "プリンセスハウス",
+  "bin": "bin/プリンセスハウス.bin",
+  "image": "images/プリンセスハウス.png"
+}
+```
 
-v2 explicitly matches those settings and:
-
-1. waits 1.2 seconds after opening the port
-2. starts the RX reader before transmitting
-3. logs USB VID/PID
-4. explicitly sets DTR/RTS off when supported
-5. logs every command TX/RX
-6. retries only the ECHO handshake up to 3 times
-7. does not send binary data until ECHO succeeds
-
-This is intended to diagnose the difference between Chrome Web Serial and
-the known-working Windows SerialPort implementation.
+GitHub Pagesでは `index.html` と `catalog.json` が同じフォルダにある状態で公開してください。
