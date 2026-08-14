@@ -1,9 +1,8 @@
 {
-  "name":"Tama P-COM Web",
-  "short_name":"Tama P-COM",
+  "name":"P-COM UART Diagnostic",
+  "short_name":"UART TEST",
   "start_url":"./",
-  "display":"fullscreen",
+  "display":"standalone",
   "background_color":"#fff0f7",
-  "theme_color":"#ffd6e8",
-  "lang":"ja"
+  "theme_color":"#ffd8ea"
 }

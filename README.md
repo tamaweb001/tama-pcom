@@ -1,28 +1,19 @@
-# Tama P-COM Web v2
+# P-COM UART Diagnostic
 
-Chrome Web Serial version of the Windows Tama P-COM sender.
+Use this page in Chrome to test the raw serial path to the XIAO/P-COM.
 
-## v2 connection diagnostics
+It deliberately does NOT implement the P-COM protocol.
 
-The initial Windows program uses:
+Test sequence:
+1. Connect.
+2. Confirm VID/PID.
+3. Default is 460800 / 8N1 / no flow control.
+4. Default DTR/RTS are OFF.
+5. Press `送信（CRLF）` with `ECHO REQ`.
+6. Watch RX bytes.
 
-- 460800 baud
-- 8 data bits
-- 1 stop bit
-- no parity
-- no hardware flow control
-- `ECHO REQ\r\n` -> `ECHO REP`
-- DTR/RTS off (matching .NET SerialPort defaults)
+If Windows receives `ECHO REP` but this page receives nothing, the logs will
+help isolate whether the difference is DTR/RTS, timing, baud rate, or the
+Chrome Web Serial transport.
 
-v2 explicitly matches those settings and:
-
-1. waits 1.2 seconds after opening the port
-2. starts the RX reader before transmitting
-3. logs USB VID/PID
-4. explicitly sets DTR/RTS off when supported
-5. logs every command TX/RX
-6. retries only the ECHO handshake up to 3 times
-7. does not send binary data until ECHO succeeds
-
-This is intended to diagnose the difference between Chrome Web Serial and
-the known-working Windows SerialPort implementation.
+The page is static and suitable for GitHub Pages.
