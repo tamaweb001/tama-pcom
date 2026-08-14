@@ -1,39 +1,28 @@
-# Tama P-COM Web
+# Tama P-COM Web v2
 
-前回の Windows版 `TamaParadiseBinSender_v1` をブラウザへ移植した試作です。
+Chrome Web Serial version of the Windows Tama P-COM sender.
 
-## 重要：これは「WebUSB」ではなく「Web Serial」版
+## v2 connection diagnostics
 
-元のWindowsソフトは `System.IO.Ports.SerialPort` で 460800 8N1 のUART通信をしています。
-そのため、ブラウザ側では同等の `navigator.serial` を使うのが自然です。
-Chrome 148ではAndroidのWeb Serial APIがUSBシリアルにも対応しています。
+The initial Windows program uses:
 
-## 実装済み
+- 460800 baud
+- 8 data bits
+- 1 stop bit
+- no parity
+- no hardware flow control
+- `ECHO REQ\r\n` -> `ECHO REP`
+- DTR/RTS off (matching .NET SerialPort defaults)
 
-- 460800 baud / 8N1 / no flow control
-- `ECHO REQ` → `ECHO REP`
-- `PKT <length>` → `ACK`
-- 4096-byte chunk
-- session_id = 0
-- message type = 3
-- TCPヘッダー生成
-- CRC16
-- nonce + SHA-256(secret) ベースのストリーム暗号
-- ACK / NAK / ENQ / CAN
-- BIN / ARC2ファイル選択
-- 進捗表示・ログ
-- 正方形中央UI
-- Service WorkerによるUIオフラインキャッシュ
-- PWA manifest（fullscreen）
+v2 explicitly matches those settings and:
 
-## GitHub Pages
+1. waits 1.2 seconds after opening the port
+2. starts the RX reader before transmitting
+3. logs USB VID/PID
+4. explicitly sets DTR/RTS off when supported
+5. logs every command TX/RX
+6. retries only the ECHO handshake up to 3 times
+7. does not send binary data until ECHO succeeds
 
-このフォルダをGitHub Pagesの公開リポジトリへそのまま配置できます。
-HTTPS上で開いて、Connectをユーザー操作で押してください。
-
-## 注意
-
-ブラウザ版の通信実機互換性は、実機で必ず確認してください。
-特にXIAOのUSBインターフェースがAndroid ChromeからWeb Serialとして列挙されることが前提です。
-
-元のWindows版に含まれていた共有秘密鍵をクライアントJSへ移植しています。これはWebアプリでは秘匿情報にはなりません。
+This is intended to diagnose the difference between Chrome Web Serial and
+the known-working Windows SerialPort implementation.
