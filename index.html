@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tama P-COM Web v5</title>
+<title>Tama P-COM Web v6</title>
 <style>
 body{font-family:system-ui,sans-serif;background:#f7eaf3;margin:0;color:#222}
 main{max-width:900px;margin:auto;padding:18px}
@@ -20,8 +20,8 @@ table{border-collapse:collapse;width:100%;font:12px monospace}td,th{padding:5px;
 <body>
 <main>
 <div class="card">
-<h1>🌸 Tama P-COM Web v5</h1>
-<div style="font-size:12px;color:#777">ファイル名：Tama_P-COM_Web_v5.html</div>
+<h1>🌸 Tama P-COM Web v6</h1>
+<div style="font-size:12px;color:#777">ファイル名：Tama_P-COM_Web_v6.html</div>
 <div class="sub">UART / 460800 8N1 — ARC2/BIN sender</div>
 <p><span class="badge">v5</span> 4096-byte payload + 16-byte wire header / ACK・NAK</p>
 </div>
@@ -79,7 +79,7 @@ const SERIAL_FILTER={usbVendorId:0x1A86, usbProductId:0x7523};
 const $=id=>document.getElementById(id);
 const enc=new TextEncoder(), dec=new TextDecoder();
 
-function log(s){$("log").textContent += s+"\\n"; $("log").scrollTop=$("log").scrollHeight}
+function log(s){$("log").textContent += s+"\n"; $("log").scrollTop=$("log").scrollHeight}
 function hx(a,max=64){let s=[...a].map(x=>x.toString(16).padStart(2,"0")).join(" ");return a.length>max?s.slice(0,max*3)+" …":s}
 function u16(a,o,v){a[o]=v&255;a[o+1]=(v>>>8)&255}
 function u32(a,o,v){a[o]=v&255;a[o+1]=(v>>>8)&255;a[o+2]=(v>>>16)&255;a[o+3]=(v>>>24)&255}
@@ -193,7 +193,7 @@ async function readLine(timeout=3000){
       if(result.done)break;
       if(result.value){
         text+=dec.decode(result.value,{stream:true});
-        const i=text.indexOf("\\n");
+        const i=text.indexOf("\n");
         if(i>=0)return text.slice(0,i).replace(/\\r/g,"").trim();
       }
     }
@@ -209,7 +209,7 @@ async function waitAck(timeout=5000){
 }
 async function echoTest(){
   log("TX ECHO REQ");
-  await writeBytes(enc.encode("ECHO REQ\\n"));
+  await writeBytes(enc.encode("ECHO REQ\n"));
   const s=await readLine();
   log("RX LINE: "+JSON.stringify(s));
   if(!/ECHO OK|ECHO REP/i.test(s))throw Error("ECHO失敗");
@@ -229,7 +229,7 @@ async function sendFile(){
   log(`FILE ${currentFile.name} (${total.toLocaleString()} bytes)`);
   log(`NONCE ${hx(nonce,4)}`);
   log(`TX PKT ${total}`);
-  await writeBytes(enc.encode(`PKT ${total}\\n`));
+  await writeBytes(enc.encode(`PKT ${total}\n`));
   await waitAck();
 
   const type=Number($("dtype").value)&255;
