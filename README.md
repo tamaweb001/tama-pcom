@@ -1,4 +1,4 @@
-# Tama P-COM Web v2
+# Tama P-COM Web v15
 
 Chrome Web Serial version of the Windows Tama P-COM sender.
 
