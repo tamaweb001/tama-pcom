@@ -2,35 +2,277 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#ffd6e8">
-<link rel="manifest" href="manifest.webmanifest">
-<title>Tama P-COM Web v2</title>
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tama P-COM Web v5</title>
+<style>
+body{font-family:system-ui,sans-serif;background:#f7eaf3;margin:0;color:#222}
+main{max-width:900px;margin:auto;padding:18px}
+.card{background:#fff;border-radius:18px;padding:18px;margin:12px 0;box-shadow:0 2px 14px #0001}
+h1{margin:0 0 4px;font-size:25px}.sub{color:#666}
+button,input{font:inherit}button{padding:11px 15px;border:0;border-radius:10px;background:#d51b83;color:#fff;font-weight:700;margin:4px}button:disabled{opacity:.45}
+input[type=number]{padding:9px;border:1px solid #ccc;border-radius:8px;box-sizing:border-box}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+#log{white-space:pre-wrap;background:#111;color:#ddd;border-radius:10px;padding:12px;min-height:220px;max-height:480px;overflow:auto;font:12px/1.45 monospace}
+table{border-collapse:collapse;width:100%;font:12px monospace}td,th{padding:5px;border-bottom:1px solid #eee;text-align:left}
+.badge{display:inline-block;padding:3px 8px;border-radius:999px;background:#eee;font-size:12px}
+</style>
 </head>
 <body>
-<main class="square">
-  <header>Tama P-COM</header>
-  <section class="content">
-    <div class="card">
-      <h1>Tamagotchi Paradise</h1>
-      <p id="support">Chrome Web Serial / USB</p>
-      <div class="row">
-        <button id="connect">Connect</button>
-        <button id="disconnect" disabled>Disconnect</button>
-      </div>
-      <div class="status"><span id="dot"></span><span id="status">未接続</span></div>
-      <label class="file">
-        <input id="file" type="file" accept=".bin,.arc2,application/octet-stream">
-        <span id="fileName">BIN / ARC2 を選択</span>
-      </label>
-      <button id="send" class="send" disabled>たまごっちへ送信</button>
-      <progress id="progress" value="0" max="1"></progress>
-      <div class="log" id="log"></div>
-    </div>
-  </section>
-  <footer>Offline-ready • 460800 8N1</footer>
+<main>
+<div class="card">
+<h1>🌸 Tama P-COM Web v5</h1>
+<div style="font-size:12px;color:#777">ファイル名：Tama_P-COM_Web_v5.html</div>
+<div class="sub">UART / 460800 8N1 — ARC2/BIN sender</div>
+<p><span class="badge">v5</span> 4096-byte payload + 16-byte wire header / ACK・NAK</p>
+</div>
+
+<div class="card">
+<h3 style="margin-top:0">① UARTポートを選択</h3>
+<div class="row">
+<button id="choose">ポートを選ぶ</button>
+<button id="refresh">一覧を更新</button>
+<button id="connectSelected" disabled>選択したポートに接続</button>
+<button id="disconnect" disabled>切断</button>
+<button id="echo" disabled>② ECHO確認</button>
+</div>
+<div style="margin:10px 0">
+<select id="ports" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:8px">
+<option value="">-- 許可済みポートはありません。「ポートを選ぶ」を押してください --</option>
+</select>
+</div>
+<div id="secure"></div>
+<div id="device">未接続</div>
+</div>
+
+<div class="card">
+<label>送信ファイル（.bin / .arc2）</label>
+<div style="margin:8px 0"><input id="file" type="file" accept=".bin,.arc2"></div>
+<div id="fileInfo">ファイル未選択</div>
+<div class="row">
+<label>Download type:
+<input id="dtype" type="number" value="3" min="0" max="255" style="width:80px">
+</label>
+<label>Payload:
+<input id="chunkSize" type="number" value="4096" readonly style="width:90px">
+</label>
+</div>
+<button id="send" disabled>③ たまごっちへ送信</button>
+</div>
+
+<div class="card">
+<h3 style="margin-top:0">送信フレーム</h3>
+<table>
+<tr><th>wire</th><td>16 + payload</td></tr>
+<tr><th>header</th><td>4-byte nonce + 12-byte TCP header</td></tr>
+<tr><th>TCP header</th><td>ASCII TCP + type + offset(uint32 LE) + length(uint16 LE) + CRC16</td></tr>
+<tr><th>crypto</th><td>SHA-256 XOR keystream</td></tr>
+</table>
+</div>
+
+<div class="card"><div id="log"></div></div>
 </main>
-<script src="app.js"></script>
+
+<script>
+let port=null, reader=null, writer=null, currentFile=null;
+let selectedPort=null;
+const SERIAL_FILTER={usbVendorId:0x1A86, usbProductId:0x7523};
+const $=id=>document.getElementById(id);
+const enc=new TextEncoder(), dec=new TextDecoder();
+
+function log(s){$("log").textContent += s+"\\n"; $("log").scrollTop=$("log").scrollHeight}
+function hx(a,max=64){let s=[...a].map(x=>x.toString(16).padStart(2,"0")).join(" ");return a.length>max?s.slice(0,max*3)+" …":s}
+function u16(a,o,v){a[o]=v&255;a[o+1]=(v>>>8)&255}
+function u32(a,o,v){a[o]=v&255;a[o+1]=(v>>>8)&255;a[o+2]=(v>>>16)&255;a[o+3]=(v>>>24)&255}
+function rnd(n){return crypto.getRandomValues(new Uint8Array(n))}
+function crc16(buf){
+  let crc=0xFFFF;
+  for(const b of buf){
+    crc ^= b;
+    for(let i=0;i<8;i++) crc=(crc&1)?((crc>>>1)^0xA001):(crc>>>1);
+  }
+  return crc;
+}
+async function sha256(x){return new Uint8Array(await crypto.subtle.digest("SHA-256",x))}
+async function xorSha256(data,nonce,offset){
+  const out=new Uint8Array(data.length);
+  let pos=0,counter=0;
+  while(pos<data.length){
+    const seed=new Uint8Array(nonce.length+4);
+    seed.set(nonce);u32(seed,nonce.length,counter++);
+    const key=await sha256(seed);
+    const n=Math.min(key.length,data.length-pos);
+    for(let i=0;i<n;i++) out[pos+i]=data[pos+i]^key[i];
+    pos+=n;
+  }
+  return out;
+}
+async function makeFrame(payload,nonce,offset,type){
+  const encrypted=await xorSha256(payload,nonce,offset);
+  const h=new Uint8Array(12);
+  h.set([0x54,0x43,0x50,type&255],0);
+  u32(h,4,offset);
+  u16(h,8,payload.length);
+  u16(h,10,crc16(encrypted));
+  const frame=new Uint8Array(16+payload.length);
+  frame.set(nonce,0); frame.set(h,4); frame.set(encrypted,16);
+  return frame;
+}
+async function choosePort(){
+  if(!("serial" in navigator)) throw Error("Web Serial非対応です。Chrome/EdgeでHTTPSのページを開いてください。");
+  selectedPort=await navigator.serial.requestPort({filters:[SERIAL_FILTER]});
+  await refreshPorts();
+  const idx=[...$("ports").options].findIndex(o=>o.value==="selected");
+  if(idx>=0)$("ports").selectedIndex=idx;
+  $("connectSelected").disabled=false;
+  log("PORT SELECTED: VID=0x1A86 PID=0x7523");
+}
+async function refreshPorts(){
+  if(!("serial" in navigator)) return;
+  const list=await navigator.serial.getPorts();
+  const sel=$("ports");
+  sel.innerHTML="";
+  if(!list.length){
+    const o=document.createElement("option");
+    o.value=""; o.textContent="-- 許可済みポートなし --";
+    sel.appendChild(o);
+    $("connectSelected").disabled=true;
+    return;
+  }
+  list.forEach((p,i)=>{
+    const info=p.getInfo();
+    const o=document.createElement("option");
+    o.value=String(i);
+    o.textContent=`USB Serial ${info.usbVendorId ? "VID=0x"+info.usbVendorId.toString(16).toUpperCase() : ""} ${info.usbProductId ? "PID=0x"+info.usbProductId.toString(16).toUpperCase() : ""}`;
+    o.dataset.index=i;
+    sel.appendChild(o);
+  });
+  selectedPort=list[Number(sel.value)||0];
+  $("connectSelected").disabled=false;
+}
+async function openPort(){
+  if(!("serial" in navigator)) throw Error("Web Serial非対応です。Chrome/EdgeでHTTPSのページを開いてください。");
+  const list=await navigator.serial.getPorts();
+  if(!selectedPort){
+    const idx=Number($("ports").value);
+    if(Number.isInteger(idx) && list[idx]) selectedPort=list[idx];
+  }
+  if(!selectedPort){
+    await choosePort();
+    selectedPort=await navigator.serial.getPorts().then(a=>a[a.length-1]);
+  }
+  if(!selectedPort) throw Error("ポートが選択されていません。");
+  port=selectedPort;
+  await port.open({baudRate:460800,dataBits:8,stopBits:1,parity:"none",bufferSize:65536});
+  writer=port.writable.getWriter();
+  $("connectSelected").disabled=true;$("disconnect").disabled=false;$("echo").disabled=false;
+  $("send").disabled=!currentFile;
+  const info=port.getInfo();
+  $("device").textContent=`接続済み: 460800 8N1 / VID=0x${(info.usbVendorId||0).toString(16).toUpperCase()} PID=0x${(info.usbProductId||0).toString(16).toUpperCase()}`;
+  log("OPEN 460800 8N1 / no flow control");
+}
+async function closePort(){
+  try{if(reader){await reader.cancel();reader.releaseLock();reader=null}}catch{}
+  try{if(writer){writer.releaseLock();writer=null}}catch{}
+  try{if(port){await port.close()}}catch{}
+  port=null;selectedPort=null;$("connectSelected").disabled=true;$("disconnect").disabled=true;$("echo").disabled=true;$("send").disabled=true;
+  $("device").textContent="未接続";await refreshPorts();log("SERIAL DISCONNECTED");
+}
+async function writeBytes(b){if(!writer)throw Error("未接続");await writer.write(b)}
+async function readLine(timeout=3000){
+  if(!port||!port.readable)throw Error("読み取りポートがありません");
+  const r=port.readable.getReader();reader=r;
+  let text="";
+  const deadline=Date.now()+timeout;
+  try{
+    while(Date.now()<deadline){
+      const left=deadline-Date.now();
+      const result=await Promise.race([
+        r.read(),
+        new Promise((_,rej)=>setTimeout(()=>rej(new Error("timeout")),left))
+      ]);
+      if(result.done)break;
+      if(result.value){
+        text+=dec.decode(result.value,{stream:true});
+        const i=text.indexOf("\\n");
+        if(i>=0)return text.slice(0,i).replace(/\\r/g,"").trim();
+      }
+    }
+  } finally {try{r.releaseLock()}catch{} reader=null}
+  throw Error("応答タイムアウト");
+}
+async function waitAck(timeout=5000){
+  const s=await readLine(timeout);
+  log("RX LINE: "+JSON.stringify(s));
+  if(s==="ACK")return true;
+  if(s==="NAK")throw Error("P-COMがNAKを返しました");
+  throw Error("ACK以外の応答: "+s);
+}
+async function echoTest(){
+  log("TX ECHO REQ");
+  await writeBytes(enc.encode("ECHO REQ\\n"));
+  const s=await readLine();
+  log("RX LINE: "+JSON.stringify(s));
+  if(!/ECHO OK|ECHO REP/i.test(s))throw Error("ECHO失敗");
+  log("ECHO OK");
+}
+async function sendFile(){
+  if(!currentFile)throw Error("ファイルを選択してください");
+  const raw=new Uint8Array(await currentFile.arrayBuffer());
+  if(raw.length<4)throw Error("ファイルが小さすぎます");
+  const magic=dec.decode(raw.slice(0,4));
+  if(magic!=="ARC2" && !currentFile.name.toLowerCase().endsWith(".bin"))
+    throw Error("ARC2ヘッダーがありません（BINとして送る場合は .bin にしてください）");
+
+  await echoTest();
+  const nonce=rnd(4);
+  const total=raw.length;
+  log(`FILE ${currentFile.name} (${total.toLocaleString()} bytes)`);
+  log(`NONCE ${hx(nonce,4)}`);
+  log(`TX PKT ${total}`);
+  await writeBytes(enc.encode(`PKT ${total}\\n`));
+  await waitAck();
+
+  const type=Number($("dtype").value)&255;
+  const size=4096;
+  const count=Math.ceil(total/size);
+  for(let i=0;i<count;i++){
+    const off=i*size;
+    const payload=raw.slice(off,Math.min(off+size,total));
+    const frame=await makeFrame(payload,nonce,off,type);
+    log(`TX chunk ${i+1}/${count}: payload=${payload.length} bytes, wire=${frame.length} bytes, offset=${off}`);
+    log(`  HEADER ${hx(frame.slice(0,16),16)}`);
+    await writeBytes(frame);
+    await waitAck(8000);
+    log(`ACK chunk ${i+1}/${count}`);
+  }
+  log("送信完了！");
+}
+$("choose").onclick=async()=>{try{await choosePort()}catch(e){log("ERROR: "+e.message)}};
+$("refresh").onclick=async()=>{try{await refreshPorts();log("PORT LIST UPDATED")}catch(e){log("ERROR: "+e.message)}};
+$("ports").onchange=async()=>{const list=await navigator.serial.getPorts();const i=Number($("ports").value);selectedPort=list[i]||null;$("connectSelected").disabled=!selectedPort;};
+$("connectSelected").onclick=async()=>{try{await openPort()}catch(e){log("ERROR: "+e.message)};};
+$("disconnect").onclick=()=>closePort();
+$("echo").onclick=async()=>{try{await echoTest()}catch(e){log("ERROR: "+e.message)}};
+$("file").onchange=e=>{
+  currentFile=e.target.files[0]||null;
+  $("fileInfo").textContent=currentFile?`${currentFile.name} (${currentFile.size.toLocaleString()} bytes)`:"ファイル未選択";
+  $("send").disabled=!currentFile||!port;
+};
+$("send").onclick=async()=>{
+  $("send").disabled=true;
+  try{await sendFile()}catch(e){log("ERROR: "+e.message)}finally{$("send").disabled=!currentFile||!port}
+};
+window.addEventListener("beforeunload",()=>{try{closePort()}catch{}});
+if("serial" in navigator){
+  $("secure").innerHTML=(window.isSecureContext
+    ? "🟢 HTTPS / Secure Context：Web Serial使用可能"
+    : "🔴 Secure Contextではありません。GitHub Pages等のHTTPS URLで開いてください。");
+  navigator.serial.addEventListener("connect",()=>refreshPorts());
+  navigator.serial.addEventListener("disconnect",()=>refreshPorts());
+  refreshPorts();
+}else{
+  $("secure").textContent="🔴 このブラウザではWeb Serial APIが利用できません。Chrome/Edgeで開いてください。";
+}
+</script>
 </body>
 </html>
