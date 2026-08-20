@@ -74,3 +74,24 @@ https://tamaweb001.github.io/tama-pcom/
 USB接続では、使用するブラウザが Web Serial / WebUSB に対応している必要があります。
 
 Phone-COM は WebUSB を使用するため、iPhone / iPad の Safari では利用できません。
+
+## TamaPCOM (.pcom)
+
+Windows版 Tama P-COM Package Editor v2 で作成した `.pcom` を「カスタム」タブから読み込めます。
+
+```text
+item.pcom
+├─ manifest.json
+├─ preview.png
+└─ data.bin
+```
+
+`manifest.json` の `id` / `name` / `tags` をカタログに使用します。
+対応タグ: ごはん / おやつ / Sゆうぐ / Mゆうぐ / きせかえ
+
+複数タグにも対応しています。
+
+## NTAG
+
+Android Chrome + HTTPSで「📱 NTAGを読み込んで送信」を使用できます。
+NDEFテキストに `TAMA-PCOM:001` または `001` のようにカタログ番号を保存しておくと、該当するカタログデータをUART / Phone-COMへ直接送信します。
