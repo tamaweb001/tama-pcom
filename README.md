@@ -95,3 +95,7 @@ item.pcom
 
 Android Chrome + HTTPSで「📱 NTAGを読み込んで送信」を使用できます。
 NDEFテキストに `TAMA-PCOM:001` または `001` のようにカタログ番号を保存しておくと、該当するカタログデータをUART / Phone-COMへ直接送信します。
+
+## GitHubカタログ
+
+`catalog/` にある `.pcom` をWeb版が自動取得します。Windows版 Package Editor v3 の「GitHubのカタログに追加」でアップロードできます。
