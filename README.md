@@ -99,10 +99,3 @@ NDEFテキストに `TAMA-PCOM:001` または `001` のようにカタログ番�
 ## GitHubカタログ
 
 `catalog/` にある `.pcom` をWeb版が自動取得します。Windows版 Package Editor v3 の「GitHubのカタログに追加」でアップロードできます。
-
-
-## GitHubカタログの日本語ファイル名
-
-`catalog/` 内の `.pcom` は、ファイル名が日本語でも読み込めるようにRaw GitHub URLを明示的にURLエンコードして取得します。
-
-GitHubカタログへ追加した直後に表示されない場合は、ページを再読み込みしてください。
