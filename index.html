@@ -1,8 +1,8 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tama P-COM Web v26 GitHub Catalog</title><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tama P-COM Web v27 Gift Catalog</title><style>
 body{font-family:system-ui,sans-serif;background:#f7eaf3;margin:0;color:#222}main{max-width:900px;margin:auto;padding:18px}.card{background:#fff;border-radius:18px;padding:18px;margin:12px 0;box-shadow:0 2px 14px #0001}h1{margin:0 0 4px;font-size:25px}.sub{color:#666}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}button{padding:11px 15px;border:0;border-radius:10px;background:#d51b83;color:#fff;font-weight:700;margin:4px}button:disabled{opacity:.45}input,select{font:inherit}select{padding:10px;border:1px solid #ccc;border-radius:8px;width:100%}.mode{display:flex;gap:8px}.mode button.active{outline:3px solid #f5a6d0}.mode button{background:#777}.mode button.active{background:#d51b83}.ok{font-weight:700}.warn{background:#fff3cd;padding:10px;border-radius:10px}.spec{border-collapse:collapse;width:100%;font:12px monospace}.spec td,.spec th{padding:5px;border-bottom:1px solid #eee;text-align:left}#log{white-space:pre-wrap;background:#111;color:#ddd;border-radius:10px;padding:12px;min-height:280px;max-height:540px;overflow:auto;font:12px/1.45 monospace}.hidden{display:none}.filename{font-size:12px;color:#777}
 .catalogTabs{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.catTab{background:#f0e6ee;color:#333}.catTab.active{background:#d51b83;color:#fff}.catPanel{padding:10px 4px}.catPanel h4{margin:5px 0}.catNote{background:#faf4f8;border-radius:10px;padding:10px;color:#666;font-size:13px}
 
-.customGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:12px}
+.giftGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:12px}.giftItem{background:#fff7fb;border:1px solid #ead3e0;border-radius:14px;padding:10px;display:flex;flex-direction:column;gap:8px}.giftItem img{width:100%;aspect-ratio:1/1;object-fit:contain;background:#fff;border-radius:10px}.giftItem .name{font-weight:800;text-align:center;font-size:14px}.giftItem .meta{font-size:12px;color:#777;text-align:center}.giftItem button{margin:0;width:100%}.giftItem .giftDisabled{background:#999;cursor:not-allowed}.customGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:12px}
 .customItem{background:#fff7fb;border:1px solid #ead3e0;border-radius:14px;padding:10px;display:flex;flex-direction:column;gap:8px}
 .customItem img{width:100%;aspect-ratio:1/1;object-fit:contain;background:#fff;border-radius:10px}
 .customItem .name{font-weight:800;text-align:center}
@@ -18,7 +18,7 @@ body{font-family:system-ui,sans-serif;background:#f7eaf3;margin:0;color:#222}mai
 .tagPill{font-size:10px;background:#eee;padding:2px 6px;border-radius:999px}
 .pcomBadge{font-size:10px;background:#e7f3ff;color:#245;padding:2px 6px;border-radius:999px}
 ""</style></head><body><main>
-<div class="card"><h1>🌸 Tama P-COM Web v26</h1><div class="filename">ファイル名：Tama_P-COM_Web_v26_GitHubCatalog_NFC.html</div><div class="filename">カタログ直接送信：ON</div><div class="sub">Windows版完全移植プロトコル + UART / Phone-COM WebUSB</div></div>
+<div class="card"><h1>🌸 Tama P-COM Web v27</h1><div class="filename">ファイル名：Tama_P-COM_Web_v27_GiftCatalog_NFC.html</div><div class="filename">カタログ直接送信：ON</div><div class="sub">Windows版完全移植プロトコル + UART / Phone-COM WebUSB</div></div>
 <div class="card"><h3 style="margin-top:0">① 接続方式を選択</h3><div class="mode"><button id="modeUart" class="active">UART接続</button><button id="modePhone">P-COM (Phone-COM)</button></div>
 <div id="uartPanel"><div class="row"><button id="choose">ポートを選ぶ</button><button id="refresh">一覧を更新</button><button id="connectSelected" disabled>選択したポートに接続</button></div><select id="ports"><option value="">-- 「ポートを選ぶ」を押してください --</option></select><div id="uartInfo">未接続</div></div>
 <div id="phonePanel" class="hidden"><div class="row"><button id="usbConnect">P-COMを選ぶ・接続</button></div><div id="usbInfo">未接続</div></div>
@@ -32,7 +32,7 @@ body{font-family:system-ui,sans-serif;background:#f7eaf3;margin:0;color:#222}mai
 <button class="catTab" data-cat="lab">🔬 Lab</button>
 <button class="catTab" data-cat="custom">🛠️ カスタム</button>
 </div>
-<div class="catPanel" id="catGift"><h4>Unlock every item</h4><p>たまごっちへ送るGiftアイテムをここから選択できます。</p><div class="catNote">※ アイテムデータを登録した場合、このカタログから送信対象ファイルを選択できます。</div></div>
+<div class="catPanel" id="catGift"><h4>🎁 Gift Catalog</h4><p>グレイシアROMから抽出した109件のGift候補を表示します。</p><div class="catNote">画像を押してGiftを選択できます。現在のv27ではカタログ表示まで実装し、実際のGift送信はまだ有効化していません。</div><div id="giftStatus" class="catNote">Giftカタログ読み込み中…</div><div id="giftGrid" class="giftGrid"></div></div>
 <div class="catPanel hidden" id="catPlaydate"><h4>Unlock secret characters</h4><p>Playdate関連のコンテンツを表示します。</p><div class="catNote">※ Playdate用データがある場合は、送信ファイルを選択して使用できます。</div></div>
 <div class="catPanel hidden" id="catLab"><h4>Send and customise Lab items</h4><p>Tamagotchi LabのARC2ファイルを読み込み、たまごっちへ送信できます。</p><div class="catNote">現在の送信欄のBIN / ARC2選択と同じデータを使用します。</div></div><div class="catPanel hidden" id="catCustom">
 <h4>🛠️ カスタムカタログ</h4>
@@ -275,4 +275,25 @@ async function selectCustomCatalog(index, buttonEl){
 document.querySelectorAll('.catTab').forEach(btn=>btn.onclick=()=>{document.querySelectorAll('.catTab').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.catPanel').forEach(p=>p.classList.add('hidden'));btn.classList.add('active');$('cat'+btn.dataset.cat.charAt(0).toUpperCase()+btn.dataset.cat.slice(1)).classList.remove('hidden')});updateButtons();if(!window.isSecureContext)log('WARNING: HTTPSのSecure Contextが必要です。');
 setupPcomV2();
 loadGitHubCatalog();
+</script><script>
+(async function(){
+  const grid=document.getElementById('giftGrid'), status=document.getElementById('giftStatus');
+  if(!grid)return;
+  try{
+    const r=await fetch('gifts/gift_catalog_109.json',{cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const data=await r.json(); const list=data.entries||[];
+    grid.innerHTML='';
+    list.forEach(item=>{
+      const d=document.createElement('div'); d.className='giftItem';
+      const img=document.createElement('img'); img.loading='lazy'; img.src='gifts/'+item.image; img.alt=item.name;
+      const name=document.createElement('div'); name.className='name'; name.textContent=item.name;
+      const meta=document.createElement('div'); meta.className='meta'; meta.textContent=`No.${String(item.catalog_no).padStart(3,'0')} / ID ${item.item_id}`;
+      const b=document.createElement('button'); b.className='giftDisabled'; b.textContent='🎁 ギフトとして送信';
+      b.disabled=true; b.title='Gift送信プロトコル解析完了後に有効化します';
+      d.append(img,name,meta,b); grid.appendChild(d);
+    });
+    status.textContent=`Giftカタログ：${list.length}件 / グレイシアROM由来`;
+  }catch(e){ status.textContent='Giftカタログの読み込みに失敗しました：'+e.message; }
+})();
 </script></body></html>

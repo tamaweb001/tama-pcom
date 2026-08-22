@@ -99,3 +99,10 @@ NDEFテキストに `TAMA-PCOM:001` または `001` のようにカタログ番�
 ## GitHubカタログ
 
 `catalog/` にある `.pcom` をWeb版が自動取得します。Windows版 Package Editor v3 の「GitHubのカタログに追加」でアップロードできます。
+
+
+## v27 Gift Catalog
+- Added 109-entry Gift catalog derived from the Glacia ROM table at 0x00B2A20.
+- Catalog metadata: `gifts/gift_catalog_109.json`.
+- Gift preview images: `gifts/images/*.png`.
+- Gift transmission is intentionally disabled in v27 until the Gift protocol is fully verified.

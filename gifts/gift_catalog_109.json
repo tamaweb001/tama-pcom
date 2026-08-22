@@ -1,0 +1,1098 @@
+{
+  "source_rom": "たまグレイシアLV10(2).bin",
+  "table_offset": "0x00B2A20",
+  "entry_size": 8,
+  "entry_count": 109,
+  "entries": [
+    {
+      "catalog_no": 1,
+      "item_id": 5033,
+      "name": "BLACK & WHITE BREAD",
+      "type": "Food",
+      "sprite": "5033.png",
+      "rom_table_offset": "0x0B2A20",
+      "rom_reference": "0x100A485D",
+      "image": "images/5033.png"
+    },
+    {
+      "catalog_no": 2,
+      "item_id": 5034,
+      "name": "BLACK & WHITE BURGER",
+      "type": "Food",
+      "sprite": "5034.png",
+      "rom_table_offset": "0x0B2A28",
+      "rom_reference": "0x100A45DE",
+      "image": "images/5034.png"
+    },
+    {
+      "catalog_no": 3,
+      "item_id": 5035,
+      "name": "BLACK & WHITE PIE",
+      "type": "Food",
+      "sprite": "5035.png",
+      "rom_table_offset": "0x0B2A30",
+      "rom_reference": "0x100A486F",
+      "image": "images/5035.png"
+    },
+    {
+      "catalog_no": 4,
+      "item_id": 5036,
+      "name": "CUP OF NOODLES",
+      "type": "Food",
+      "sprite": "5036.png",
+      "rom_table_offset": "0x0B2A38",
+      "rom_reference": "0x100A4638",
+      "image": "images/5036.png"
+    },
+    {
+      "catalog_no": 5,
+      "item_id": 5037,
+      "name": "BREAD",
+      "type": "Food",
+      "sprite": "5037.png",
+      "rom_table_offset": "0x0B2A40",
+      "rom_reference": "0x100A4677",
+      "image": "images/5037.png"
+    },
+    {
+      "catalog_no": 6,
+      "item_id": 5038,
+      "name": "BBQ",
+      "type": "Food",
+      "sprite": "5038.png",
+      "rom_table_offset": "0x0B2A48",
+      "rom_reference": "0x100A48F6",
+      "image": "images/5038.png"
+    },
+    {
+      "catalog_no": 7,
+      "item_id": 5039,
+      "name": "DUMPLINGS",
+      "type": "Food",
+      "sprite": "5039.png",
+      "rom_table_offset": "0x0B2A50",
+      "rom_reference": "0x100A4785",
+      "image": "images/5039.png"
+    },
+    {
+      "catalog_no": 8,
+      "item_id": 5040,
+      "name": "SANDWICHES",
+      "type": "Food",
+      "sprite": "5040.png",
+      "rom_table_offset": "0x0B2A58",
+      "rom_reference": "0x100A47CD",
+      "image": "images/5040.png"
+    },
+    {
+      "catalog_no": 9,
+      "item_id": 5041,
+      "name": "TAKOYAKI",
+      "type": "Food",
+      "sprite": "5041.png",
+      "rom_table_offset": "0x0B2A60",
+      "rom_reference": "0x100A464A",
+      "image": "images/5041.png"
+    },
+    {
+      "catalog_no": 10,
+      "item_id": 5042,
+      "name": "PASTA",
+      "type": "Food",
+      "sprite": "5042.png",
+      "rom_table_offset": "0x0B2A68",
+      "rom_reference": "0x100A4893",
+      "image": "images/5042.png"
+    },
+    {
+      "catalog_no": 11,
+      "item_id": 5043,
+      "name": "PIZZA",
+      "type": "Food",
+      "sprite": "5043.png",
+      "rom_table_offset": "0x0B2A70",
+      "rom_reference": "0x100A466E",
+      "image": "images/5043.png"
+    },
+    {
+      "catalog_no": 12,
+      "item_id": 5044,
+      "name": "SUSHI",
+      "type": "Food",
+      "sprite": "5044.png",
+      "rom_table_offset": "0x0B2A78",
+      "rom_reference": "0x100A46E3",
+      "image": "images/5044.png"
+    },
+    {
+      "catalog_no": 13,
+      "item_id": 5045,
+      "name": "HAMBURGER",
+      "type": "Food",
+      "sprite": "5045.png",
+      "rom_table_offset": "0x0B2A80",
+      "rom_reference": "0x100A4815",
+      "image": "images/5045.png"
+    },
+    {
+      "catalog_no": 14,
+      "item_id": 5046,
+      "name": "FRENCH FRIES",
+      "type": "Food",
+      "sprite": "5046.png",
+      "rom_table_offset": "0x0B2A88",
+      "rom_reference": "0x100A460B",
+      "image": "images/5046.png"
+    },
+    {
+      "catalog_no": 15,
+      "item_id": 5047,
+      "name": "RAMEN",
+      "type": "Food",
+      "sprite": "5047.png",
+      "rom_table_offset": "0x0B2A90",
+      "rom_reference": "0x100A4722",
+      "image": "images/5047.png"
+    },
+    {
+      "catalog_no": 16,
+      "item_id": 5048,
+      "name": "UDON",
+      "type": "Food",
+      "sprite": "5048.png",
+      "rom_table_offset": "0x0B2A98",
+      "rom_reference": "0x100A48FF",
+      "image": "images/5048.png"
+    },
+    {
+      "catalog_no": 17,
+      "item_id": 5049,
+      "name": "FRIED CHICKEN",
+      "type": "Food",
+      "sprite": "5049.png",
+      "rom_table_offset": "0x0B2AA0",
+      "rom_reference": "0x100A4602",
+      "image": "images/5049.png"
+    },
+    {
+      "catalog_no": 18,
+      "item_id": 5050,
+      "name": "CURRY RICE",
+      "type": "Food",
+      "sprite": "5050.png",
+      "rom_table_offset": "0x0B2AA8",
+      "rom_reference": "0x100A46AD",
+      "image": "images/5050.png"
+    },
+    {
+      "catalog_no": 19,
+      "item_id": 5051,
+      "name": "RICE BOWL",
+      "type": "Food",
+      "sprite": "5051.png",
+      "rom_table_offset": "0x0B2AB0",
+      "rom_reference": "0x100A47B2",
+      "image": "images/5051.png"
+    },
+    {
+      "catalog_no": 20,
+      "item_id": 5052,
+      "name": "RICE BALL",
+      "type": "Food",
+      "sprite": "5052.png",
+      "rom_table_offset": "0x0B2AB8",
+      "rom_reference": "0x100A46B6",
+      "image": "images/5052.png"
+    },
+    {
+      "catalog_no": 21,
+      "item_id": 5053,
+      "name": "HAMBURG STEAK",
+      "type": "Food",
+      "sprite": "5053.png",
+      "rom_table_offset": "0x0B2AC0",
+      "rom_reference": "0x100A47DF",
+      "image": "images/5053.png"
+    },
+    {
+      "catalog_no": 22,
+      "item_id": 5054,
+      "name": "TACOS",
+      "type": "Food",
+      "sprite": "5054.png",
+      "rom_table_offset": "0x0B2AC8",
+      "rom_reference": "0x100A46BF",
+      "image": "images/5054.png"
+    },
+    {
+      "catalog_no": 23,
+      "item_id": 5055,
+      "name": "PAELLA",
+      "type": "Food",
+      "sprite": "5055.png",
+      "rom_table_offset": "0x0B2AD0",
+      "rom_reference": "0x100A4908",
+      "image": "images/5055.png"
+    },
+    {
+      "catalog_no": 24,
+      "item_id": 6019,
+      "name": "BOLO",
+      "type": "Snack",
+      "sprite": "6019.png",
+      "rom_table_offset": "0x0B2AD8",
+      "rom_reference": "0x100A4614",
+      "image": "images/6019.png"
+    },
+    {
+      "catalog_no": 25,
+      "item_id": 6020,
+      "name": "YUKINOYADO",
+      "type": "Snack",
+      "sprite": "6020.png",
+      "rom_table_offset": "0x0B2AE0",
+      "rom_reference": "0x100A46D1",
+      "image": "images/6020.png"
+    },
+    {
+      "catalog_no": 26,
+      "item_id": 6021,
+      "name": "PARI PARI BAR",
+      "type": "Snack",
+      "sprite": "6021.png",
+      "rom_table_offset": "0x0B2AE8",
+      "rom_reference": "0x100A472B",
+      "image": "images/6021.png"
+    },
+    {
+      "catalog_no": 27,
+      "item_id": 6022,
+      "name": "JUICE",
+      "type": "Snack",
+      "sprite": "6022.png",
+      "rom_table_offset": "0x0B2AF0",
+      "rom_reference": "0x100A4803",
+      "image": "images/6022.png"
+    },
+    {
+      "catalog_no": 28,
+      "item_id": 6023,
+      "name": "SNACK CUP",
+      "type": "Snack",
+      "sprite": "6023.png",
+      "rom_table_offset": "0x0B2AF8",
+      "rom_reference": "0x100A46FE",
+      "image": "images/6023.png"
+    },
+    {
+      "catalog_no": 29,
+      "item_id": 6024,
+      "name": "POTATO CHIPS",
+      "type": "Snack",
+      "sprite": "6024.png",
+      "rom_table_offset": "0x0B2B00",
+      "rom_reference": "0x100A4626",
+      "image": "images/6024.png"
+    },
+    {
+      "catalog_no": 30,
+      "item_id": 6025,
+      "name": "YOGURT",
+      "type": "Snack",
+      "sprite": "6025.png",
+      "rom_table_offset": "0x0B2B08",
+      "rom_reference": "0x100A491A",
+      "image": "images/6025.png"
+    },
+    {
+      "catalog_no": 31,
+      "item_id": 6026,
+      "name": "CHOCOLATE",
+      "type": "Snack",
+      "sprite": "6026.png",
+      "rom_table_offset": "0x0B2B10",
+      "rom_reference": "0x100A47E8",
+      "image": "images/6026.png"
+    },
+    {
+      "catalog_no": 32,
+      "item_id": 6027,
+      "name": "ICE CREAM",
+      "type": "Snack",
+      "sprite": "6027.png",
+      "rom_table_offset": "0x0B2B18",
+      "rom_reference": "0x100A4839",
+      "image": "images/6027.png"
+    },
+    {
+      "catalog_no": 33,
+      "item_id": 6028,
+      "name": "SOFT SERVE",
+      "type": "Snack",
+      "sprite": "6028.png",
+      "rom_table_offset": "0x0B2B20",
+      "rom_reference": "0x100A47FA",
+      "image": "images/6028.png"
+    },
+    {
+      "catalog_no": 34,
+      "item_id": 6029,
+      "name": "GUMMIES",
+      "type": "Snack",
+      "sprite": "6029.png",
+      "rom_table_offset": "0x0B2B28",
+      "rom_reference": "0x100A4935",
+      "image": "images/6029.png"
+    },
+    {
+      "catalog_no": 35,
+      "item_id": 6030,
+      "name": "DONUT",
+      "type": "Snack",
+      "sprite": "6030.png",
+      "rom_table_offset": "0x0B2B30",
+      "rom_reference": "0x100A4692",
+      "image": "images/6030.png"
+    },
+    {
+      "catalog_no": 36,
+      "item_id": 6031,
+      "name": "CAKE",
+      "type": "Snack",
+      "sprite": "6031.png",
+      "rom_table_offset": "0x0B2B38",
+      "rom_reference": "0x100A4986",
+      "image": "images/6031.png"
+    },
+    {
+      "catalog_no": 37,
+      "item_id": 6032,
+      "name": "WAFERS",
+      "type": "Snack",
+      "sprite": "6032.png",
+      "rom_table_offset": "0x0B2B40",
+      "rom_reference": "0x100A492C",
+      "image": "images/6032.png"
+    },
+    {
+      "catalog_no": 38,
+      "item_id": 6033,
+      "name": "SODA CANDIES",
+      "type": "Snack",
+      "sprite": "6033.png",
+      "rom_table_offset": "0x0B2B48",
+      "rom_reference": "0x100A4773",
+      "image": "images/6033.png"
+    },
+    {
+      "catalog_no": 39,
+      "item_id": 6034,
+      "name": "CANDY",
+      "type": "Snack",
+      "sprite": "6034.png",
+      "rom_table_offset": "0x0B2B50",
+      "rom_reference": "0x100A47C4",
+      "image": "images/6034.png"
+    },
+    {
+      "catalog_no": 40,
+      "item_id": 6035,
+      "name": "DRINK",
+      "type": "Snack",
+      "sprite": "6035.png",
+      "rom_table_offset": "0x0B2B58",
+      "rom_reference": "0x100A45E7",
+      "image": "images/6035.png"
+    },
+    {
+      "catalog_no": 41,
+      "item_id": 6036,
+      "name": "PUDDING",
+      "type": "Snack",
+      "sprite": "6036.png",
+      "rom_table_offset": "0x0B2B60",
+      "rom_reference": "0x100A46F5",
+      "image": "images/6036.png"
+    },
+    {
+      "catalog_no": 42,
+      "item_id": 6037,
+      "name": "COOKIE",
+      "type": "Snack",
+      "sprite": "6037.png",
+      "rom_table_offset": "0x0B2B68",
+      "rom_reference": "0x100A4641",
+      "image": "images/6037.png"
+    },
+    {
+      "catalog_no": 43,
+      "item_id": 6038,
+      "name": "SUNDAE",
+      "type": "Snack",
+      "sprite": "6038.png",
+      "rom_table_offset": "0x0B2B70",
+      "rom_reference": "0x100A4707",
+      "image": "images/6038.png"
+    },
+    {
+      "catalog_no": 44,
+      "item_id": 6039,
+      "name": "GUM",
+      "type": "Snack",
+      "sprite": "6039.png",
+      "rom_table_offset": "0x0B2B78",
+      "rom_reference": "0x100A4866",
+      "image": "images/6039.png"
+    },
+    {
+      "catalog_no": 45,
+      "item_id": 6040,
+      "name": "TAITCHIYAKI",
+      "type": "Snack",
+      "sprite": "6040.png",
+      "rom_table_offset": "0x0B2B80",
+      "rom_reference": "0x100A462F",
+      "image": "images/6040.png"
+    },
+    {
+      "catalog_no": 46,
+      "item_id": 6041,
+      "name": "MARSHMALLOWS",
+      "type": "Snack",
+      "sprite": "6041.png",
+      "rom_table_offset": "0x0B2B88",
+      "rom_reference": "0x100A4710",
+      "image": "images/6041.png"
+    },
+    {
+      "catalog_no": 47,
+      "item_id": 6042,
+      "name": "CREPE",
+      "type": "Snack",
+      "sprite": "6042.png",
+      "rom_table_offset": "0x0B2B90",
+      "rom_reference": "0x100A46EC",
+      "image": "images/6042.png"
+    },
+    {
+      "catalog_no": 48,
+      "item_id": 6043,
+      "name": "COTTON CANDY",
+      "type": "Snack",
+      "sprite": "6043.png",
+      "rom_table_offset": "0x0B2B98",
+      "rom_reference": "0x100A4665",
+      "image": "images/6043.png"
+    },
+    {
+      "catalog_no": 49,
+      "item_id": 6044,
+      "name": "GALETTE",
+      "type": "Snack",
+      "sprite": "6044.png",
+      "rom_table_offset": "0x0B2BA0",
+      "rom_reference": "0x100A480C",
+      "image": "images/6044.png"
+    },
+    {
+      "catalog_no": 50,
+      "item_id": 6045,
+      "name": "COFFEE",
+      "type": "Snack",
+      "sprite": "6045.png",
+      "rom_table_offset": "0x0B2BA8",
+      "rom_reference": "0x100A46A4",
+      "image": "images/6045.png"
+    },
+    {
+      "catalog_no": 51,
+      "item_id": 7002,
+      "name": "TAMAVERSE OBJECT",
+      "type": "LargeOutsideToy",
+      "sprite": "7002.png",
+      "rom_table_offset": "0x0B2BB0",
+      "rom_reference": "0x100A46C8",
+      "image": "images/7002.png"
+    },
+    {
+      "catalog_no": 52,
+      "item_id": 7004,
+      "name": "SLIDE",
+      "type": "LargeOutsideToy",
+      "sprite": "7004.png",
+      "rom_table_offset": "0x0B2BB8",
+      "rom_reference": "0x100A47D6",
+      "image": "images/7004.png"
+    },
+    {
+      "catalog_no": 53,
+      "item_id": 7005,
+      "name": "CRADLE",
+      "type": "LargeOutsideToy",
+      "sprite": "7005.png",
+      "rom_table_offset": "0x0B2BC0",
+      "rom_reference": "0x100A4758",
+      "image": "images/7005.png"
+    },
+    {
+      "catalog_no": 54,
+      "item_id": 7009,
+      "name": "SWING",
+      "type": "LargeOutsideToy",
+      "sprite": "7009.png",
+      "rom_table_offset": "0x0B2BC8",
+      "rom_reference": "0x100A4962",
+      "image": "images/7009.png"
+    },
+    {
+      "catalog_no": 55,
+      "item_id": 7041,
+      "name": "BUS",
+      "type": "LargeOutsideToy",
+      "sprite": "7041.png",
+      "rom_table_offset": "0x0B2BD0",
+      "rom_reference": "0x100A478E",
+      "image": "images/7041.png"
+    },
+    {
+      "catalog_no": 56,
+      "item_id": 7042,
+      "name": "TRAIN",
+      "type": "LargeOutsideToy",
+      "sprite": "7042.png",
+      "rom_table_offset": "0x0B2BD8",
+      "rom_reference": "0x100A4680",
+      "image": "images/7042.png"
+    },
+    {
+      "catalog_no": 57,
+      "item_id": 7043,
+      "name": "SHOPPING CART",
+      "type": "SmallOutsideToy",
+      "sprite": "7043.png",
+      "rom_table_offset": "0x0B2BE0",
+      "rom_reference": "0x100A4974",
+      "image": "images/7043.png"
+    },
+    {
+      "catalog_no": 58,
+      "item_id": 7044,
+      "name": "SHOPPING BASKET",
+      "type": "SmallOutsideToy",
+      "sprite": "7044.png",
+      "rom_table_offset": "0x0B2BE8",
+      "rom_reference": "0x100A473D",
+      "image": "images/7044.png"
+    },
+    {
+      "catalog_no": 59,
+      "item_id": 7045,
+      "name": "HAMBURGER CUSHION",
+      "type": "SmallOutsideToy",
+      "sprite": "7045.png",
+      "rom_table_offset": "0x0B2BF0",
+      "rom_reference": "0x100A498F",
+      "image": "images/7045.png"
+    },
+    {
+      "catalog_no": 60,
+      "item_id": 7046,
+      "name": "JACK-IN-THE-BOX",
+      "type": "SmallOutsideToy",
+      "sprite": "7046.png",
+      "rom_table_offset": "0x0B2BF8",
+      "rom_reference": "0x100A4911",
+      "image": "images/7046.png"
+    },
+    {
+      "catalog_no": 61,
+      "item_id": 7047,
+      "name": "TOY PIANO",
+      "type": "SmallOutsideToy",
+      "sprite": "7047.png",
+      "rom_table_offset": "0x0B2C00",
+      "rom_reference": "0x100A47BB",
+      "image": "images/7047.png"
+    },
+    {
+      "catalog_no": 62,
+      "item_id": 7048,
+      "name": "TAMAGOTCHI PLUSHES",
+      "type": "SmallOutsideToy",
+      "sprite": "7048.png",
+      "rom_table_offset": "0x0B2C08",
+      "rom_reference": "0x100A4854",
+      "image": "images/7048.png"
+    },
+    {
+      "catalog_no": 63,
+      "item_id": 7049,
+      "name": "CHRISTMAS TREE",
+      "type": "SmallOutsideToy",
+      "sprite": "7049.png",
+      "rom_table_offset": "0x0B2C10",
+      "rom_reference": "0x100A465C",
+      "image": "images/7049.png"
+    },
+    {
+      "catalog_no": 64,
+      "item_id": 7050,
+      "name": "BATHTUB",
+      "type": "SmallOutsideToy",
+      "sprite": "7050.png",
+      "rom_table_offset": "0x0B2C18",
+      "rom_reference": "0x100A46DA",
+      "image": "images/7050.png"
+    },
+    {
+      "catalog_no": 65,
+      "item_id": 7051,
+      "name": "CRANE GAME",
+      "type": "LargeOutsideToy",
+      "sprite": "7051.png",
+      "rom_table_offset": "0x0B2C20",
+      "rom_reference": "0x100A45F9",
+      "image": "images/7051.png"
+    },
+    {
+      "catalog_no": 66,
+      "item_id": 8108,
+      "name": "BOOK",
+      "type": "PlanetAccessory",
+      "sprite": "8108.png",
+      "rom_table_offset": "0x0B2C28",
+      "rom_reference": "0x100A493E",
+      "image": "images/8108.png"
+    },
+    {
+      "catalog_no": 67,
+      "item_id": 7053,
+      "name": "MAGAZINE",
+      "type": "SmallOutsideToy",
+      "sprite": "7053.png",
+      "rom_table_offset": "0x0B2C30",
+      "rom_reference": "0x100A461D",
+      "image": "images/7053.png"
+    },
+    {
+      "catalog_no": 68,
+      "item_id": 7054,
+      "name": "MANGA",
+      "type": "SmallOutsideToy",
+      "sprite": "7054.png",
+      "rom_table_offset": "0x0B2C38",
+      "rom_reference": "0x100A48C9",
+      "image": "images/7054.png"
+    },
+    {
+      "catalog_no": 69,
+      "item_id": 7055,
+      "name": "PEN",
+      "type": "SmallOutsideToy",
+      "sprite": "7055.png",
+      "rom_table_offset": "0x0B2C40",
+      "rom_reference": "0x100A48E4",
+      "image": "images/7055.png"
+    },
+    {
+      "catalog_no": 70,
+      "item_id": 7056,
+      "name": "POUCH",
+      "type": "SmallOutsideToy",
+      "sprite": "7056.png",
+      "rom_table_offset": "0x0B2C48",
+      "rom_reference": "0x100A45D5",
+      "image": "images/7056.png"
+    },
+    {
+      "catalog_no": 71,
+      "item_id": 7057,
+      "name": "T-SHIRT",
+      "type": "SmallOutsideToy",
+      "sprite": "7057.png",
+      "rom_table_offset": "0x0B2C50",
+      "rom_reference": "0x100A4827",
+      "image": "images/7057.png"
+    },
+    {
+      "catalog_no": 72,
+      "item_id": 7058,
+      "name": "STANDING MIC",
+      "type": "SmallOutsideToy",
+      "sprite": "7058.png",
+      "rom_table_offset": "0x0B2C58",
+      "rom_reference": "0x100A488A",
+      "image": "images/7058.png"
+    },
+    {
+      "catalog_no": 73,
+      "item_id": 7059,
+      "name": "GASHAPON MACHINE",
+      "type": "SmallOutsideToy",
+      "sprite": "7059.png",
+      "rom_table_offset": "0x0B2C60",
+      "rom_reference": "0x100A4830",
+      "image": "images/7059.png"
+    },
+    {
+      "catalog_no": 74,
+      "item_id": 7060,
+      "name": "PRINCE TAMAHIKO'S UFO",
+      "type": "SmallOutsideToy",
+      "sprite": "7060.png",
+      "rom_table_offset": "0x0B2C68",
+      "rom_reference": "0x100A4842",
+      "image": "images/7060.png"
+    },
+    {
+      "catalog_no": 75,
+      "item_id": 7061,
+      "name": "UMAHIKO OUTSIDE TOY",
+      "type": "SmallOutsideToy",
+      "sprite": "7061.png",
+      "rom_table_offset": "0x0B2C70",
+      "rom_reference": "0x100A47F1",
+      "image": "images/7061.png"
+    },
+    {
+      "catalog_no": 76,
+      "item_id": 8107,
+      "name": "ACADEMIC CAP",
+      "type": "PlanetHat",
+      "sprite": "8107.png",
+      "rom_table_offset": "0x0B2C78",
+      "rom_reference": "0x100A4959",
+      "image": "images/8107.png"
+    },
+    {
+      "catalog_no": 77,
+      "item_id": 8046,
+      "name": "MEOWTCHI PLUSH",
+      "type": "PlanetAccessory",
+      "sprite": "8046.png",
+      "rom_table_offset": "0x0B2C80",
+      "rom_reference": "0x100A474F",
+      "image": "images/8046.png"
+    },
+    {
+      "catalog_no": 78,
+      "item_id": 8047,
+      "name": "IRUKATCHI PLUSH",
+      "type": "PlanetAccessory",
+      "sprite": "8047.png",
+      "rom_table_offset": "0x0B2C88",
+      "rom_reference": "0x100A48ED",
+      "image": "images/8047.png"
+    },
+    {
+      "catalog_no": 79,
+      "item_id": 8048,
+      "name": "HORHOTCHI PLUSH",
+      "type": "PlanetAccessory",
+      "sprite": "8048.png",
+      "rom_table_offset": "0x0B2C90",
+      "rom_reference": "0x100A49A1",
+      "image": "images/8048.png"
+    },
+    {
+      "catalog_no": 80,
+      "item_id": 8049,
+      "name": "MAMETCHI PLUSH",
+      "type": "PlanetAccessory",
+      "sprite": "8049.png",
+      "rom_table_offset": "0x0B2C98",
+      "rom_reference": "0x100A48C0",
+      "image": "images/8049.png"
+    },
+    {
+      "catalog_no": 81,
+      "item_id": 8050,
+      "name": "KUCHIPATCHI PLUSH",
+      "type": "PlanetAccessory",
+      "sprite": "8050.png",
+      "rom_table_offset": "0x0B2CA0",
+      "rom_reference": "0x100A4950",
+      "image": "images/8050.png"
+    },
+    {
+      "catalog_no": 82,
+      "item_id": 8051,
+      "name": "BABYMARUTCHI PLUSH",
+      "type": "PlanetAccessory",
+      "sprite": "8051.png",
+      "rom_table_offset": "0x0B2CA8",
+      "rom_reference": "0x100A4734",
+      "image": "images/8051.png"
+    },
+    {
+      "catalog_no": 83,
+      "item_id": 8052,
+      "name": "JINS GLASSES",
+      "type": "PlanetGlasses",
+      "sprite": "8052.png",
+      "rom_table_offset": "0x0B2CB0",
+      "rom_reference": "0x100A4761",
+      "image": "images/8052.png"
+    },
+    {
+      "catalog_no": 84,
+      "item_id": 8053,
+      "name": "LIGHT STICK",
+      "type": "PlanetAccessory",
+      "sprite": "8053.png",
+      "rom_table_offset": "0x0B2CB8",
+      "rom_reference": "0x100A481E",
+      "image": "images/8053.png"
+    },
+    {
+      "catalog_no": 85,
+      "item_id": 8054,
+      "name": "TAMA BACKPACK",
+      "type": "PlanetAccessory",
+      "sprite": "8054.png",
+      "rom_table_offset": "0x0B2CC0",
+      "rom_reference": "0x100A476A",
+      "image": "images/8054.png"
+    },
+    {
+      "catalog_no": 86,
+      "item_id": 8055,
+      "name": "TAMA POUCH",
+      "type": "PlanetAccessory",
+      "sprite": "8055.png",
+      "rom_table_offset": "0x0B2CC8",
+      "rom_reference": "0x100A497D",
+      "image": "images/8055.png"
+    },
+    {
+      "catalog_no": 87,
+      "item_id": 8056,
+      "name": "HANDY ROCKET",
+      "type": "PlanetAccessory",
+      "sprite": "8056.png",
+      "rom_table_offset": "0x0B2CD0",
+      "rom_reference": "0x100A4878",
+      "image": "images/8056.png"
+    },
+    {
+      "catalog_no": 88,
+      "item_id": 8057,
+      "name": "CELL PHONE",
+      "type": "PlanetAccessory",
+      "sprite": "8057.png",
+      "rom_table_offset": "0x0B2CD8",
+      "rom_reference": "0x100A4998",
+      "image": "images/8057.png"
+    },
+    {
+      "catalog_no": 89,
+      "item_id": 8058,
+      "name": "LOVELY RIBBON",
+      "type": "PlanetHat",
+      "sprite": "8058.png",
+      "rom_table_offset": "0x0B2CE0",
+      "rom_reference": "0x100A47A0",
+      "image": "images/8058.png"
+    },
+    {
+      "catalog_no": 90,
+      "item_id": 8059,
+      "name": "PLANET RING",
+      "type": "PlanetAccessory",
+      "sprite": "8059.png",
+      "rom_table_offset": "0x0B2CE8",
+      "rom_reference": "0x100A4653",
+      "image": "images/8059.png"
+    },
+    {
+      "catalog_no": 91,
+      "item_id": 8060,
+      "name": "MEOWTCHI HEADBAND",
+      "type": "PlanetHat",
+      "sprite": "8060.png",
+      "rom_table_offset": "0x0B2CF0",
+      "rom_reference": "0x100A48A5",
+      "image": "images/8060.png"
+    },
+    {
+      "catalog_no": 92,
+      "item_id": 8061,
+      "name": "IRUKATCHI HAT",
+      "type": "PlanetHat",
+      "sprite": "8061.png",
+      "rom_table_offset": "0x0B2CF8",
+      "rom_reference": "0x100A484B",
+      "image": "images/8061.png"
+    },
+    {
+      "catalog_no": 93,
+      "item_id": 8062,
+      "name": "HORHOTCHI WING",
+      "type": "PlanetAccessory",
+      "sprite": "8062.png",
+      "rom_table_offset": "0x0B2D00",
+      "rom_reference": "0x100A4797",
+      "image": "images/8062.png"
+    },
+    {
+      "catalog_no": 94,
+      "item_id": 8063,
+      "name": "SHOOTING STAR HEADBAND",
+      "type": "PlanetHat",
+      "sprite": "8063.png",
+      "rom_table_offset": "0x0B2D08",
+      "rom_reference": "0x100A4881",
+      "image": "images/8063.png"
+    },
+    {
+      "catalog_no": 95,
+      "item_id": 8064,
+      "name": "HORNS HEADBAND",
+      "type": "PlanetHat",
+      "sprite": "8064.png",
+      "rom_table_offset": "0x0B2D10",
+      "rom_reference": "0x100A477C",
+      "image": "images/8064.png"
+    },
+    {
+      "catalog_no": 96,
+      "item_id": 8065,
+      "name": "MUSHROOM HAT",
+      "type": "PlanetHat",
+      "sprite": "8065.png",
+      "rom_table_offset": "0x0B2D18",
+      "rom_reference": "0x100A496B",
+      "image": "images/8065.png"
+    },
+    {
+      "catalog_no": 97,
+      "item_id": 8066,
+      "name": "RICE CAKES",
+      "type": "PlanetAccessory",
+      "sprite": "8066.png",
+      "rom_table_offset": "0x0B2D20",
+      "rom_reference": "0x100A48AE",
+      "image": "images/8066.png"
+    },
+    {
+      "catalog_no": 98,
+      "item_id": 8067,
+      "name": "MT. FUJI HAT",
+      "type": "PlanetHat",
+      "sprite": "8067.png",
+      "rom_table_offset": "0x0B2D28",
+      "rom_reference": "0x100A4689",
+      "image": "images/8067.png"
+    },
+    {
+      "catalog_no": 99,
+      "item_id": 8068,
+      "name": "SOMBRERO",
+      "type": "PlanetHat",
+      "sprite": "8068.png",
+      "rom_table_offset": "0x0B2D30",
+      "rom_reference": "0x100A45F0",
+      "image": "images/8068.png"
+    },
+    {
+      "catalog_no": 100,
+      "item_id": 8069,
+      "name": "PLUM BLOSSOM ORNAMENT",
+      "type": "PlanetHat",
+      "sprite": "8069.png",
+      "rom_table_offset": "0x0B2D38",
+      "rom_reference": "0x100A489C",
+      "image": "images/8069.png"
+    },
+    {
+      "catalog_no": 101,
+      "item_id": 8070,
+      "name": "CHEF HAT",
+      "type": "PlanetHat",
+      "sprite": "8070.png",
+      "rom_table_offset": "0x0B2D40",
+      "rom_reference": "0x100A48B7",
+      "image": "images/8070.png"
+    },
+    {
+      "catalog_no": 102,
+      "item_id": 8071,
+      "name": "RAINBOW AFRO",
+      "type": "PlanetHat",
+      "sprite": "8071.png",
+      "rom_table_offset": "0x0B2D48",
+      "rom_reference": "0x100A4947",
+      "image": "images/8071.png"
+    },
+    {
+      "catalog_no": 103,
+      "item_id": 8072,
+      "name": "BALLOONS",
+      "type": "PlanetAccessory",
+      "sprite": "8072.png",
+      "rom_table_offset": "0x0B2D50",
+      "rom_reference": "0x100A47A9",
+      "image": "images/8072.png"
+    },
+    {
+      "catalog_no": 104,
+      "item_id": 8073,
+      "name": "CANDY CANE",
+      "type": "PlanetAccessory",
+      "sprite": "8073.png",
+      "rom_table_offset": "0x0B2D58",
+      "rom_reference": "0x100A4719",
+      "image": "images/8073.png"
+    },
+    {
+      "catalog_no": 105,
+      "item_id": 8074,
+      "name": "LEAF CROWN",
+      "type": "PlanetHat",
+      "sprite": "8074.png",
+      "rom_table_offset": "0x0B2D60",
+      "rom_reference": "0x100A48D2",
+      "image": "images/8074.png"
+    },
+    {
+      "catalog_no": 106,
+      "item_id": 8075,
+      "name": "RABBIT HAT",
+      "type": "PlanetHat",
+      "sprite": "8075.png",
+      "rom_table_offset": "0x0B2D68",
+      "rom_reference": "0x100A4923",
+      "image": "images/8075.png"
+    },
+    {
+      "catalog_no": 107,
+      "item_id": 8076,
+      "name": "LANTERN",
+      "type": "PlanetAccessory",
+      "sprite": "8076.png",
+      "rom_table_offset": "0x0B2D70",
+      "rom_reference": "0x100A469B",
+      "image": "images/8076.png"
+    },
+    {
+      "catalog_no": 108,
+      "item_id": 8077,
+      "name": "TAMA CHINESE HAT",
+      "type": "PlanetHat",
+      "sprite": "8077.png",
+      "rom_table_offset": "0x0B2D78",
+      "rom_reference": "0x100A4746",
+      "image": "images/8077.png"
+    },
+    {
+      "catalog_no": 109,
+      "item_id": 8078,
+      "name": "WHITE CHOCOLATE MASCOT",
+      "type": "PlanetHat",
+      "sprite": "8078.png",
+      "rom_table_offset": "0x0B2D80",
+      "rom_reference": "0x100A48DB",
+      "image": "images/8078.png"
+    }
+  ]
+}
